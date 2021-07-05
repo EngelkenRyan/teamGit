@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import App from '../App';
 import { Button } from "reactstrap";
 
 const Nasa = (props) => {
 
   const baseUrl = "https://api.nasa.gov/planetary/earth/imagery";
-  let date = "2020-07-03";
+  let date = "2021-07-03";
   const dim = "0.4";
   const key = "8ex13JiMfUHrXlbYt8DUTqRMWvBpYLygUtWjoy8R";
   let url = `${baseUrl}?lon=${props.longitude}&lat=${props.latitude}&date=${date}&dim=${dim}&api_key=${key}`;
@@ -26,7 +27,7 @@ const Nasa = (props) => {
       <h4>Get your current location</h4>
       <br />
       <Button size="lg" color="info" onClick={handleFetch}>
-        Search
+        Search Location
       </Button>
       <hr />
       <br />
