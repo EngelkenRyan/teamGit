@@ -45,9 +45,32 @@ h5, h3 {
   color: red;
 }
 
+
+.nasaapi{
+  align-content: center;
+}
+
 .sidebar {
   display: flex;
+  overflow:auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+/* Sidebar */
+.sidebar-list-styling{
+  padding-left: 50px;
+  padding-top: 15px;
+  width: 20%;
   background-color: #53565A;
-  margin-top: 10px;
+  color: white;
+}
+.sidebar-list a{
+  color: black;
+  padding: 0;
+}
+.sidebar-route{
+  flex: 1;
+  padding: '00px';
+  
 }
 

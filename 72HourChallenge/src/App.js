@@ -1,6 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
-import OpenWeather from './components/OpenWeather';
+import Sidebar from './site/sidebar';
+import {
+  BrowserRouter as Router  
+} from 'react-router-dom';
 
 const App = () => {
   const [lat, setLat] = useState('');
@@ -12,11 +15,12 @@ const App = () => {
     });
   }
   getLocation();
-  // console.log(`Latitude is ${lat}`)
-  // console.log(`Longitude is ${lon}`)
+
     return (
       <div className="App">
-      <OpenWeather lat={lat} lon={lon} />
+        <Router>
+      <Sidebar />
+      </Router>
     </div>
   );
 }
