@@ -19,7 +19,9 @@ const Nasa = (props) => {
       .then((data) => {
         setImage(data.url);
         console.log(data);
-      });
+      },
+      error => console.log(error)
+      );
   }
 
   return (
