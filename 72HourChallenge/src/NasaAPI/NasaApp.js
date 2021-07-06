@@ -22,14 +22,15 @@ const Nasa = (props) => {
       },
       error => console.log(error)
       );
-  }
+  };
 
   return (
     <div>
+      <br></br>
       <h4>Get your current location</h4>
       <br />
       <Button size="lg" color="info" onClick={handleFetch}>
-        Search Location
+        Search
       </Button>
       <hr />
       <br />
