@@ -1,45 +1,47 @@
 import React, {useState, useEffect} from 'react';
 import App from '../App';
 
-const OpenWeather = (props) => {
+
+function OpenWeather(props) {
+    const [weather, setWeather] = useState();
+    const [toggle, setToggle] = useState(true);
     const key = "2f07c92033c8a046ac9d6524f89e2bdf";
-    
-    const [displayW, setDisplayW] = useState("");
-    const [fah, setFah] = useState(true);
-    console.log(props.weather);
-    let temp= props.weather.main.temp;
-    console.log(temp)
-    
-    let cel = Math.round((temp - 32) * (5/9),3);
-    function toggleFah() {
-        setFah(fah => !fah)
-        
-        console.log(cel)
-        return cel;
+  
+    function fetchWeather () {
+      fetch(
+        `http://api.openweathermap.org/data/2.5/weather?lat=${props.latitude}&lon=${props.longitude}&appid=${key}`
+      )
+        .then((response) => response.json())
+        .then((data) => setWeather(data.main.temp));
     }
-    let conditions = props.weather.weather[0].description;
-    conditions = conditions.charAt(0).toUpperCase() + conditions.slice(1);
-    let iconNum = props.weather.weather[0].icon;
-    let iconURL = `http://openweathermap.org/img/w/${iconNum}.png`
-
-    return (
-        <div id="weatherBox">
-            <h3>{props.weather.name}</h3>
-            <p><span id="tiny">Latitude: {props.latitude}<br />Longitude: {props.longitude}</span></p>
-            {/* <button onClick={showWeather}>Get Weather!</button> */}
-            {/* <div>{displayW}</div> */}
-            { props.weather.weather !== undefined ? 
+    
+    function toggleButton(){
+        if (toggle === true){
+            setToggle(false)
+          } else {
+              setToggle(true)
+          }}
+          
+          
+          useEffect(() => {
+              fetchWeather();
+          }, []);
+  
+  
+        return (
             <div>
-            <h4>{conditions}</h4>
-            <img src={iconURL} />
-            <p>Temperature: {fah === true ? `${temp}°f`: `${cel}°c`}<br />
-            <button onClick={toggleFah}>&#176;f / &#176;c</button></p>
-            <p>Wind speed: {props.weather.wind.speed}</p> 
-            </div>
-            : ""}
-        </div>
-    );
-}
-
-
+           <h1>Your Weather</h1>
+           <h1>{props.feels_like}</h1>
+       
+            
+            {toggle === true ? Math.floor(weather * 1.8 - 459.67) +"°F" : Math.floor(weather - 273.12)+"°C" }
+            <br></br>
+            <br />
+            {toggle === true ? <button onClick ={toggleButton}>Change to Centigrade</button>:
+            <button onClick ={toggleButton}>Change to Fahrenheit</button>}
+      
+          </div>
+        );
+  };
+    
 export default OpenWeather;
