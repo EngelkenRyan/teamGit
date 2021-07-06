@@ -14,8 +14,7 @@ const App = () => {
     });
   }
   getLocation();
-  console.log(`Latitude is ${lat}`)
-  console.log(`Longitude is ${lon}`)
+
 
     return (
       <div className="App">

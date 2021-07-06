@@ -7,7 +7,6 @@ const TicketMaster = (props) => {
     const key = '6oISORFdGLuqsWGTg1FJGwS9IQncf489'
     
     let url = `https://app.ticketmaster.com/discovery/v2/events?apikey=${key}&latlong=${lat},${lon}&radius=15&unit=miles&sort=random&locale=*`;
-    console.log(`${lat} and ${lon}`);
 
     useEffect(() => {
         
