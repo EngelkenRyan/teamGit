@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 function OpenWeather (props) {
     const [weather, setWeather] = useState();
-    const {lat, lon} = props;
+    const {lat, lon, feels_like} = props;
     const [toggle, setToggle] = useState(true);
     const key = "2f07c92033c8a046ac9d6524f89e2bdf";
     const baseURL = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
