@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import App from '../App';
 
+const key = "2f07c92033c8a046ac9d6524f89e2bdf";
 
-function OpenWeather(props) {
+function OpenWeather (props) {
     const [weather, setWeather] = useState();
+    const [lat, lon] = props;
     const [toggle, setToggle] = useState(true);
-    const key = "2f07c92033c8a046ac9d6524f89e2bdf";
   
-    function fetchWeather () {
+    function fetchWeather() {
       fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${props.latitude}&lon=${props.longitude}&appid=${key}`
+        `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&key=${key}`
       )
         .then((response) => response.json())
-        .then((data) => setWeather(data.main.temp));
+        .then((data) => setWeather(data.main));
     }
     
     function toggleButton(){
@@ -44,4 +45,5 @@ function OpenWeather(props) {
         );
   };
     
+
 export default OpenWeather;
