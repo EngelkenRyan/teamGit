@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import TicketMaster from './components/TicketMaster';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+
+  const [lat, setLat] = useState('');
+  const [lon, setLon] = useState('');
+
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLat(position.coords.latitude)
+      setLon(position.coords.longitude)
+    });
+  }
+  getLocation();
+
+
+    return (
+      <div className="App">
+      <TicketMaster lat={lat} lon={lon} />
     </div>
   );
 }
 
-export default App;
+
+  export default App;

@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+ul {
+  list-style-type: none;
+}
+
+h5, h3 {
+  color: red;
+}
+
+.sidebar {
+  display: flex;
+  background-color: #53565A;
+  margin-top: 10px;
+}
+
